@@ -124,12 +124,41 @@ $('document').ready(function(){
 		});
 	});	
 
-	$('#cake_fadein').click(function(){
-		$('.cake').fadeIn('slow');
-		$(this).fadeOut('slow').delay(3000).promise().done(function(){
-			$('#light_candle').fadeIn('slow');
-		});
-	});
+	// $('#cake_fadein').click(function(){
+	// 	$('.cake').fadeIn('slow');
+	// 	$(this).fadeOut('slow').delay(3000).promise().done(function(){
+	// 		$('#light_candle').fadeIn('slow');
+	// 	});
+	// });
+
+$("#cake_fadein").click(function () {
+  // Tampilkan elemen .cake dengan efek fadeIn
+  $(".cake").fadeIn("slow");
+
+  // Sembunyikan tombol setelah diklik
+  $(this).fadeOut("slow");
+
+  // Tampilkan alert untuk memberitahukan pengguna untuk scroll ke bawah
+  alert("Scroll ke bawah untuk melihat gaya kue!");
+
+  // Setelah alert, tunggu efek fade-out pada tombol dan lanjutkan
+  $(".cake")
+    .promise()
+    .done(function () {
+      // Tampilkan elemen #light_candle setelah fade-out pada tombol selesai
+      $("#light_candle").fadeIn("slow");
+
+      // Scroll ke bagian #cake-style setelah efek selesai
+      $("html, body").animate(
+        {
+          scrollTop: $("#cake-style").offset().top,
+        },
+        1000
+      ); // Waktu scroll 1000ms
+    });
+});
+
+
 
 	$('#light_candle').click(function(){
 		$('.fuego').fadeIn('slow');
